@@ -10,6 +10,7 @@ public class paddlecontroller : MonoBehaviour
     public float pressedPosition;
     public float flipperStrength;
     public float flipperDamper;
+    public string inputMouseButton;
     // Start is called before the first frame update
     void Start()
     {
@@ -25,7 +26,7 @@ public class paddlecontroller : MonoBehaviour
         spring.spring = flipperStrength;
         spring.damper = flipperDamper;
 
-        if (Input.GetMouseButtonDown(0))
+        if (Input.GetButtonDown(inputMouseButton))
         {
             spring.targetPosition = pressedPosition;
             Debug.Log("hai premuto");
