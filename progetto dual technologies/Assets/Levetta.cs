@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class Levetta : MonoBehaviour
 {
-    public GameObject levetta;
     public float forza = 5f;
     // Start is called before the first frame update
     void Start()
@@ -20,12 +19,12 @@ public class Levetta : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
-        if (collision.gameObject.CompareTag("levetta") && Input.GetKey(KeyCode.K))
+        if (collision.gameObject.CompareTag("levetta"))
         {
             
             {
                 Debug.Log("hospinto");
-                GetComponent<Rigidbody>().AddForce(0,0,5000);
+                GetComponent<Rigidbody>().AddForce(0,0,forza);
             }
         }
     }

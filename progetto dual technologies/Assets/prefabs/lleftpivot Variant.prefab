@@ -134,6 +134,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: lleftpivot Variant
       objectReference: {fileID: 0}
+    - target: {fileID: 5389332052637855043, guid: 7b22f138ae3317b44b039f9437b4f04f, type: 3}
+      propertyPath: m_TagString
+      value: levetta
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7b22f138ae3317b44b039f9437b4f04f, type: 3}
 --- !u!1 &1884079797377225824 stripped
