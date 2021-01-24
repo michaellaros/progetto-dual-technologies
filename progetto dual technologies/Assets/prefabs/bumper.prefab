@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 1043371536470675295}
   - component: {fileID: 1715218256015701424}
   - component: {fileID: 3182849764138767346}
+  - component: {fileID: 4289381612907929260}
   m_Layer: 0
   m_Name: ZBrush_defualt_group
   m_TagString: Untagged
@@ -81,6 +82,20 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!136 &4289381612907929260
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7456574812854684975}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  m_Radius: 0.9551659
+  m_Height: 5.22
+  m_Direction: 1
+  m_Center: {x: -2.3648542e-12, y: 0.044234965, z: 0.018560886}
 --- !u!1 &7483261452067046754
 GameObject:
   m_ObjectHideFlags: 0
