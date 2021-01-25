@@ -38,12 +38,12 @@ public class PullSpring : MonoBehaviour
     }
 
     // Update is called once per frame
-   
+
     void Update()
     {
         if (Input.GetKeyDown("space"))
         {
-            if(moveCount < distance)
+            if (moveCount < distance)
             {
                 transform.Translate(0, 0, -speed * Time.deltaTime);
                 moveCount += speed * Time.deltaTime;
@@ -51,9 +51,9 @@ public class PullSpring : MonoBehaviour
             }
         }
 
-        else if(moveCount > 0)
+        else if (moveCount > 0)
         {
-            if(fire && ready)
+            if (fire && ready)
             {
                 ball.transform.TransformDirection(Vector3.forward * 10);
                 ball.GetComponent<Rigidbody>().AddForce(0, 0, moveCount * power);
@@ -64,6 +64,7 @@ public class PullSpring : MonoBehaviour
             moveCount -= 20 * Time.deltaTime;
 
         }
+
 
         if (Input.GetKeyDown(KeyCode.C))
         {
@@ -88,8 +89,15 @@ public class PullSpring : MonoBehaviour
             moveCount2 -= 20 * Time.deltaTime;
 
         }
+    }
+    private void FixedUpdate()
+    {
+        
+    }
+
+       
 
 
 
     }
-}
+
