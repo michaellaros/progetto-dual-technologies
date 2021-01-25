@@ -9,18 +9,24 @@ public class Freezelevette : MonoBehaviour
     public float currentTime = 0f;
     public float startingTime = 5f;
     private bool timer;
+    private MeshRenderer meshRenderer;
+    private BoxCollider meshCollider;
     // Start is called before the first frame update
     void Start()
     {
         left.GetComponent<Left>().movementSpeed = 0.5f;
         right.GetComponent<Right>().movementSpeed = 0.5f;
         currentTime = startingTime;
+        meshRenderer = GetComponent<MeshRenderer>();
+        meshCollider = GetComponent<BoxCollider>();
+        left = GameObject.Find("lleftpivot");
+        right = GameObject.Find("lrightpivot");
     }
 
     // Update is called once per frame
     void Update()
     {
-        Invoke("OnCollisionEnter",1f);
+        
         if (timer)
         {
             currentTime -= 1 * Time.deltaTime;
@@ -30,7 +36,8 @@ public class Freezelevette : MonoBehaviour
         {
             left.GetComponent<Left>().movementSpeed = 0.5f;
             right.GetComponent<Right>().movementSpeed = 0.5f;
-            
+            timer = false;
+            currentTime = startingTime;
         }
     }
 
@@ -42,7 +49,9 @@ public class Freezelevette : MonoBehaviour
             left.GetComponent<Left>().movementSpeed = 10f;
             right.GetComponent<Right>().movementSpeed = 10f;
         }
-        Destroy(gameObject);
-        
+        meshRenderer.enabled = !meshRenderer.enabled;
+        meshCollider.enabled = !meshCollider.enabled;
+
+
     }
 }
