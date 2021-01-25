@@ -8,6 +8,7 @@ TagManager:
   - levetta
   - ball2
   - spring
+  - Sender
   layers:
   - Default
   - TransparentFX

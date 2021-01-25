@@ -12,18 +12,23 @@ public class Left : MonoBehaviour
     void Start()
     {
         originalRotation = transform.eulerAngles;
+        InputManager.Singleton.LDownEvent.AddListener(LDown);
+        InputManager.Singleton.LUpEvent.AddListener(LUp);
     }
 
     // Update is called once per frame
     void Update()
     {
-        if(Input.GetKeyDown(KeyCode.K))
-        {
+        
+    }
+
+    public void LDown()
+    {
             iTween.RotateTo(gameObject, iTween.Hash("rotation", pressedRotationpoint.eulerAngles, "easeType", "easeOutQuint", "time", movementSpeed)); 
-        }
-        if (Input.GetKeyUp(KeyCode.K))
-        {
+    }
+
+    public void LUp()
+    {
             iTween.RotateTo(gameObject, iTween.Hash("rotation", originalRotation, "easeType", "easeOutQuint", "time", movementSpeed));
-        }
     }
 }

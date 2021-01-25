@@ -12,18 +12,23 @@ public class Right : MonoBehaviour
     void Start()
     {
         originalRotation = transform.eulerAngles;
+        InputManager.Singleton.RDownEvent.AddListener(RDown);
+        InputManager.Singleton.RUpEvent.AddListener(RUp);
     }
 
     // Update is called once per frame
     void Update()
     {
-        if(Input.GetKeyDown(KeyCode.L))
-        {
+        
+    }
+
+    public void RDown()
+    {
             iTween.RotateTo(gameObject, iTween.Hash("rotation", pressedRotationpoint.eulerAngles, "easeType", "easeOutQuint", "time", movementSpeed)); 
-        }
-        if (Input.GetKeyUp(KeyCode.L))
-        {
+    }
+
+    public void RUp()
+    {
             iTween.RotateTo(gameObject, iTween.Hash("rotation", originalRotation, "easeType", "easeOutQuint", "time", movementSpeed));
-        }
     }
 }

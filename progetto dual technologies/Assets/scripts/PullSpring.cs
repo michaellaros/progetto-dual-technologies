@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class PullSpring : MonoBehaviour
 {
-    public string InputButtonName;
     public float distance = 50f;
     public float speed = 1;
     public GameObject ball;
@@ -41,7 +40,7 @@ public class PullSpring : MonoBehaviour
 
     void Update()
     {
-        if (Input.GetKeyDown("space"))
+        if (Input.GetButtonDown("Jump"))
         {
             if (moveCount < distance)
             {

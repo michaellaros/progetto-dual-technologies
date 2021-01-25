@@ -57,11 +57,15 @@ public class InputManager : MonoBehaviour
     {
         LInputs();
         RInputs();
+        
+        ArduinoConnected = arduino.Connected;
     }
 
     void LInputs()
     {
-        if( arduino.digitalRead(ButtonPin) > 0.5f)
+        if (ArduinoConnected)
+        {
+            if( arduino.digitalRead(ButtonPin) > 0.5f)
             {
                 if(!LPressed)
                 {
@@ -70,7 +74,7 @@ public class InputManager : MonoBehaviour
                 }
             
             }
-            else
+            else 
             {
                 if(LPressed)
                 {
@@ -78,15 +82,19 @@ public class InputManager : MonoBehaviour
                  LPressed = false;
                 }
             }
-        if (Input.GetButtonDown("Fire1"))
+        }
+        else if(!ArduinoConnected)
         {
+            if (Input.GetButton("Fire1"))
+            {
             LDownEvent.Invoke();
             LPressed = true;
-        }
-        if (Input.GetButtonUp("Fire1"))
-        {
+            }
+            if (Input.GetButtonUp("Fire1"))
+            {
             LUpEvent.Invoke();
             LPressed = false;
+            }
         }
     }
 
@@ -94,32 +102,38 @@ public class InputManager : MonoBehaviour
     {
         SoundNormalizedValue = (float)arduino.analogRead(SoundPin) / 1024f;
         print(arduino.analogRead(0));
-        if (SoundNormalizedValue > SoundThreshold)
+        if (ArduinoConnected)
         {
-            if (!RPressed)
+            if (SoundNormalizedValue > SoundThreshold)
             {
+                if (!RPressed)
+                {
                 RDownEvent.Invoke();
                 RPressed = true;
-            }
+                }
 
+            }
+             else 
+            {
+                if (RPressed)
+                {
+                RUpEvent.Invoke();
+                RPressed = false;
+                }
+            }
         }
         else
         {
-            if (RPressed)
+            if (Input.GetButton("Fire2"))
             {
-                RUpEvent.Invoke();
-                RPressed = true;
-            }
-        }
-        if (Input.GetButtonDown("Fire2"))
-        {
             RDownEvent.Invoke();
             RPressed = true;
-        }
-        if (Input.GetButtonUp("Fire2"))
-        {
+            }
+            if (Input.GetButtonUp("Fire2"))
+            {
             RUpEvent.Invoke();
             RPressed = false;
+            }
         }
 
     }
