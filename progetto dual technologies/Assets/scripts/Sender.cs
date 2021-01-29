@@ -6,7 +6,6 @@ public class Sender : MonoBehaviour
 {
     public OSC MyOsc;
 
-    private int Freeze = 1;
     // Start is called before the first frame update
     void Start()
     {
@@ -22,8 +21,17 @@ public class Sender : MonoBehaviour
     public void SenderSyncFreeze()
     {
         OscMessage tempMessageToSend = new OscMessage();
-        tempMessageToSend.address = "/SyncAilment";
-        tempMessageToSend.values.Add(Freeze);
+        tempMessageToSend.address = "/SyncAilmentFreeze";
+        tempMessageToSend.values.Add(1);
+
+        MyOsc.Send(tempMessageToSend);
+    }
+
+    public void SenderSyncFog()
+    {
+        OscMessage tempMessageToSend = new OscMessage();
+        tempMessageToSend.address = "/SyncAilmentFog";
+        tempMessageToSend.values.Add(1);
 
         MyOsc.Send(tempMessageToSend);
     }
